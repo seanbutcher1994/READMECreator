@@ -2,6 +2,7 @@
 
 const inquirer = require("inquirer");
 const fs = require("fs");
+const path = require('path');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 
@@ -9,12 +10,12 @@ const generateMarkdown = require('./utils/generateMarkdown');
 const questions = [
     {
         type: 'input',
-        message: 'What is yot GitHub username?',
+        message: 'What is your GitHub username?',
         name: 'gitUser'
     },
     {
         type: 'input',
-        message: 'What is the name of this projects GitHub Repository? (Please be exact)',
+        message: 'What is the name of this projects title? (Please copy and paste from GitHub)',
         name: 'repo'
     },
     {
@@ -22,15 +23,7 @@ const questions = [
         message: 'What is your email address?',
         name: 'email'
     },
-    {   type: 'input',
-        message: 'Provide instructions for how users can reach you to ask additional questions',
-        name: 'questions'
-    },
-    {
-        type: 'input',
-        message: 'What is the title of your project?',
-        name: 'title'
-    },
+
     {
         type: 'input',
         message: 'Please provide a description of your project (1-2 lines)',
@@ -61,19 +54,19 @@ const questions = [
         message: 'What license have you chosen for your project?',
         name: 'license',
         choices: [
-            'Apache 2.0',
-            'GNU General Public v3.0',
+            'Apache_2.0',
+            'GNU_General_Public_v3.0',
             'MIT',
-            'BSD 2-Clause "Simplified" v3.0',
-            'BSD 3-Clause "New"',
-            'Boost Software 1.0',
-            'Creative Commons Zero v1.0 Unviversal',
-            'Eclipse Public 2.0',
-            'GNUE Affero General Public v3.0',
-            'GNU General Public v2.0',
-            'GNU Lesser General Public v2.1',
-            'Mozilla Public 2.0',
-            'The Unlicense'
+            'BSD_2_Clause "Simplified" v3.0',
+            'BSD_3_Clause "New"',
+            'Boost_Software_1.0',
+            'Creative_Commons_Zero_v1.0_Unviversal',
+            'Eclipse_Public_2.0',
+            'GNUE_Affero_General_Public_v3.0',
+            'GNU_General_Public_v2.0',
+            'GNU_Lesser_General_Public_v2.1',
+            'Mozilla_Public_2.0',
+            'The_Unlicense'
         ]
     }
 ];
@@ -84,6 +77,10 @@ function init() {
     inquirer.prompt(questions)
     .then(function(ans){
         console.log({ans});
+
+        const readme = generateMarkdown(ans);
+        const outputPath = path.join(__dirname, 'output', 'README.md');
+        fs.writeFileSync(outputPath, readme, 'utf-8')
     })
 }
 
