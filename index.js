@@ -68,7 +68,17 @@ const questions = [
             'Mozilla_Public_2.0',
             'The_Unlicense'
         ]
-    }
+    },
+    // {
+    //     type: 'checkbox',
+    //     message: 'Which technologies have you used in this project?',
+    //     name: 'tech',
+    //     choices: [
+    //         'HTML',
+    //         'JavaScript',
+    //         'CSS'
+    //     ]
+    // }
 ];
 
 

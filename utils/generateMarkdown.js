@@ -1,20 +1,24 @@
+// function generateTechBadge(tech){
+// for (let i = 0; i < tech.length; i++) {
+//   const techBadge = tech[i];
+//   console.log(techBadge);
+  
+// }
+// }
+// generateTechBadge(data.tech);
+
+
 
 function generateLicenseBadge(license){
   return `![${license}](https://img.shields.io/badge/License-${license}-brightgreen)`
 }
-// function replaceCharacter(license){
-//   const str = license;
-
-//   const replaceCharacter = str.replaceAll('_', ' ');
-//   console.log(replaceCharacter);
-// }
-// replaceCharacter();
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   const str = data.license;
   const replaceCharacter = str.replaceAll('_', ' ');
-  
+
+
   return `# ${data.repo} ${generateLicenseBadge(data.license)}
 
   ## Description
